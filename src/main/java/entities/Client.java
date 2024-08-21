@@ -83,4 +83,5 @@ public class Client {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
 }

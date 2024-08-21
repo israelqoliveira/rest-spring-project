@@ -1,5 +1,6 @@
 package services;
 
+import entities.BankAccount;
 import entities.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,7 @@ public class ClientService {
         Optional<Client> obj = repository.findById(id);
         return obj.get();
     }
+
+
 
 }

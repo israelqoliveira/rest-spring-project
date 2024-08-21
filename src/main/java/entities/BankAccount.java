@@ -1,5 +1,7 @@
 package entities;
 
+import Enums.AccStatus;
+import Enums.AccType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -14,8 +16,12 @@ public class BankAccount {
     private long id;
     private String accNumber;
     private BigDecimal amount;
+    private BigDecimal initialAmount;
     private Instant datCreation;
-    private AccType accType; //ATIVO, INATIVO OU BLOQUEADO
+
+
+    AccType accType;
+    AccStatus accStatus;
 
     @ManyToOne
     private Client client;
@@ -53,6 +59,14 @@ public class BankAccount {
         return amount;
     }
 
+    public BigDecimal getInitialAmount() {
+        return initialAmount;
+    }
+
+    public void setInitialAmount(BigDecimal initialAmount) {
+        this.initialAmount = initialAmount;
+    }
+
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
@@ -81,11 +95,5 @@ public class BankAccount {
         this.client = client;
     }
 
-    public enum AccType {
-        CORRENTE, POUPANCA
-    }
 
-    public enum accStatus {
-        ACTIVE, INACTIVE, BLOCKED
-    }
 }
