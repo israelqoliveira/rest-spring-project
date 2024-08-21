@@ -2,10 +2,15 @@ package entities;
 
 import Enums.AccStatus;
 import Enums.AccType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -14,12 +19,20 @@ import java.time.Instant;
 @Table(name = "tb_account")
 public class BankAccount {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String accNumber;
-    private BigDecimal amount;
-    private BigDecimal initialAmount;
-    private Instant datCreation;
 
+    @Column(name = "ACCNUMBER")
+    private String accNumber;
+
+    @Column(name = "AMOUNT")
+    private BigDecimal amount;
+
+    private BigDecimal initialAmount;
+
+    @Column(name = "DATCREATION")
+    private Instant datCreation;
 
     AccType accType;
     AccStatus accStatus;

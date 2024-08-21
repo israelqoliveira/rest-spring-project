@@ -1,5 +1,6 @@
 package entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,10 +17,19 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "EMAIL")
     private String email;
+
+    @Column(name = "PASSWORD")
     private String password;
+
+    @Column(name = "PHONE")
     private String phone;
+
 
     @OneToOne
     public BankAccount bankAccount;
@@ -63,12 +73,24 @@ public class Client {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
     }
 
     @Override
