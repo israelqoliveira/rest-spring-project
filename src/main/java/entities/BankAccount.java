@@ -5,6 +5,7 @@ import Enums.AccType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -23,6 +24,7 @@ public class BankAccount {
     AccType accType;
     AccStatus accStatus;
 
+    @Setter
     @ManyToOne
     private Client client;
 
@@ -59,16 +61,16 @@ public class BankAccount {
         return amount;
     }
 
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
     public BigDecimal getInitialAmount() {
         return initialAmount;
     }
 
     public void setInitialAmount(BigDecimal initialAmount) {
         this.initialAmount = initialAmount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
     }
 
     public Instant getDatCreation() {
@@ -87,6 +89,14 @@ public class BankAccount {
         this.accType = accType;
     }
 
+    public AccStatus getAccStatus() {
+        return accStatus;
+    }
+
+    public void setAccStatus(AccStatus accStatus) {
+        this.accStatus = accStatus;
+    }
+
     public Client getClient() {
         return client;
     }
@@ -94,6 +104,4 @@ public class BankAccount {
     public void setClient(Client client) {
         this.client = client;
     }
-
-
 }
